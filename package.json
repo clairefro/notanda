@@ -1,0 +1,20 @@
+{
+  "name": "notanda",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "be:db:setup": "npm --prefix backend run db:setup",
+    "be:db:seed": "npm --prefix backend run db:seed",
+    "be:db:clear": "npm --prefix backend run db:clear",
+    "be:db:destroy": "npm --prefix backend run db:destroy",
+    "be:start": "npm --prefix backend start",
+    "be:dev": "npm --prefix backend run dev",
+    "be:test": "npm --prefix backend test",
+    "fe:start": "npm --prefix frontend start",
+    "fe:build": "npm --prefix frontend run build"
+  }
+}
