@@ -1,11 +1,12 @@
 const express = require("express");
+const { itemsDao } = require("../dao");
+
 const router = express.Router();
-const itemsDao = require("../dao/itemsDao");
 
 // Example route to get all items
 router.get("/", async (req, res) => {
   try {
-    const items = await itemsDao.findAll();
+    const items = await itemsDao.findAllWithAuthors();
     res.json(items);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch items" });
