@@ -16,6 +16,14 @@
     "be:test": "npm --prefix backend test",
     "fe:start": "npm --prefix frontend start",
     "fe:dev": "npm --prefix frontend run dev",
-    "fe:build": "npm --prefix frontend run build"
+    "fe:build": "npm --prefix frontend run build",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:restart": "docker-compose restart app",
+    "docker:db:setup": "docker-compose exec app node db/setup.js",
+    "docker:db:seed": "docker-compose exec app node db/seed.js",
+    "docker:db:shell": "export $(cat .env | xargs) && docker-compose exec db psql -U $DB_USER -d $DB_NAME"
   }
 }
