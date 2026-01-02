@@ -4,9 +4,15 @@ only use docker for db, use hot reloading for others
 
 ```sh
 # Start just the db in docker
+
+# (first time)
+npm run docker:build
+
 npm run docker:dev:up    # Starts DB only
-npm run be:db:setup      # (first time) Setup tables
-npm run be:db:seed       # (first time) Add sample data
+
+# (first time)
+npm run be:db:setup      # Setup tables
+npm run be:db:seed       # Add sample data
 
 # Run backend locally (uses Docker DB)
 npm run be:dev
