@@ -20,6 +20,8 @@
     "docker:build": "docker-compose build",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
+    "docker:dev:up": "docker-compose -f docker-compose.dev.yml up -d",
+    "docker:dev:down": "docker-compose -f docker-compose.dev.yml down",
     "docker:logs": "docker-compose logs -f",
     "docker:restart": "docker-compose restart app",
     "docker:db:setup": "docker-compose exec app node db/setup.js",

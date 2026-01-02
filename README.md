@@ -1,3 +1,33 @@
+# Local dev
+
+only use docker for db, use hot reloading for others
+
+```sh
+# Start just the db in docker
+npm run docker:dev:up    # Starts DB only
+npm run be:db:setup      # (first time) Setup tables
+npm run be:db:seed       # (first time) Add sample data
+
+# Run backend locally (uses Docker DB)
+npm run be:dev
+
+# Run frontend locally (proxies to local backend)
+npm run fe:dev
+```
+
+when done:
+
+```sh
+npm run docker:dev:down
+```
+
+# Test prod build
+
+```sh
+npm run docker:build
+npm run docker:up
+```
+
 # Setting Up PostgreSQL
 
 This guide explains how to set up PostgreSQL for development on macOS and Linux.
