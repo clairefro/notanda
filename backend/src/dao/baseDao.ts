@@ -1,11 +1,16 @@
-const { pool } = require("../../db/_db");
+import { Pool } from "pg";
+const { pool }: { pool: Pool } = require("../../db/_db");
 
-class BaseDao {
-  constructor(tableName) {
+class BaseDao<T = any> {
+  protected tableName: string;
+
+  constructor(tableName: string) {
     this.tableName = tableName;
   }
 
-  async findAll(options = {}) {
+  async findAll(
+    options: { orderBy?: string; order?: "ASC" | "DESC" } = {}
+  ): Promise<T[]> {
     try {
       const { orderBy = "created_at", order = "DESC" } = options;
       const result = await pool.query(
@@ -18,7 +23,7 @@ class BaseDao {
     }
   }
 
-  async count() {
+  async count(): Promise<number> {
     try {
       const result = await pool.query(`SELECT COUNT(*) FROM ${this.tableName}`);
       return parseInt(result.rows[0].count, 10);
@@ -28,7 +33,7 @@ class BaseDao {
     }
   }
 
-  async findById(id) {
+  async findById(id: number): Promise<T | undefined> {
     try {
       const result = await pool.query(
         `SELECT * FROM ${this.tableName} WHERE id = $1`,
@@ -41,7 +46,7 @@ class BaseDao {
     }
   }
 
-  async create(data) {
+  async create(data: Record<string, any>): Promise<T> {
     try {
       const columns = Object.keys(data).join(", ");
       const values = Object.values(data);
@@ -58,7 +63,7 @@ class BaseDao {
     }
   }
 
-  async update(id, data) {
+  async update(id: number, data: Record<string, any>): Promise<T | undefined> {
     try {
       const entries = Object.entries(data);
       const setClause = entries
@@ -77,7 +82,7 @@ class BaseDao {
     }
   }
 
-  async delete(id) {
+  async delete(id: number): Promise<void> {
     try {
       await pool.query(`DELETE FROM ${this.tableName} WHERE id = $1`, [id]);
     } catch (error) {
@@ -87,4 +92,4 @@ class BaseDao {
   }
 }
 
-module.exports = BaseDao;
+export = BaseDao;

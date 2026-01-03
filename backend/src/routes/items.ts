@@ -1,10 +1,10 @@
-const express = require("express");
+import express, { Request, Response } from "express";
 const { itemsDao } = require("../dao");
 
 const router = express.Router();
 
 // Example route to get all items
-router.get("/", async (req, res) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
     const items = await itemsDao.findAllWithAuthors();
     res.json(items);
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 });
 
 // Example route to create a new item
-router.post("/", async (req, res) => {
+router.post("/", async (req: Request, res: Response) => {
   try {
     const newItem = await itemsDao.create(req.body);
     res.status(201).json(newItem);
@@ -23,4 +23,4 @@ router.post("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

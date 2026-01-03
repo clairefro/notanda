@@ -1,5 +1,6 @@
-const express = require("express");
-const path = require("path");
+import express, { Request, Response } from "express";
+import path from "path";
+import apiRoutes from "./routes";
 
 const app = express();
 const PORT = process.env.BE_PORT || 3000;
@@ -8,19 +9,19 @@ const PORT = process.env.BE_PORT || 3000;
 app.use(express.json());
 
 // API routes
-app.use("/api", require("./routes"));
+app.use("/api", apiRoutes);
 
 // Serve frontend in prod
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
-  app.get("*", (req, res) => {
+  app.get("*", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../../frontend/dist", "index.html"));
   });
 }
 
 // Root route (dev)
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.send("You are in dev - use dev port to access frontend");
 });
 
