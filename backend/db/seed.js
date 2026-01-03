@@ -1,4 +1,4 @@
-const { pool } = require("./_db");
+import { pool } from "./_db.js";
 
 const seedData = async () => {
   try {

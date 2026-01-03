@@ -1,6 +1,11 @@
-const { Pool } = require("pg");
-const dotenv = require("dotenv");
-const path = require("path");
+import pg from "pg";
+const { Pool } = pg;
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load .env file only in non-production environments
 if (process.env.NODE_ENV !== "production") {
@@ -32,4 +37,4 @@ const pool = new Pool({
   port: parseInt(process.env.DB_PORT, 10),
 });
 
-module.exports = { pool };
+export { pool };

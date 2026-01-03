@@ -1,5 +1,5 @@
-const { pool } = require("./_db");
-const readline = require("readline");
+import { pool } from "./_db.js";
+import readline from "readline";
 
 const rl = readline.createInterface({
   input: process.stdin,

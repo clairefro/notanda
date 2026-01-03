@@ -1,4 +1,4 @@
-const BaseDao = require("./baseDao");
+import BaseDao from "./baseDao";
 
 class AuthorsDao extends BaseDao {
   constructor() {
@@ -6,4 +6,4 @@ class AuthorsDao extends BaseDao {
   }
 }
 
-module.exports = new AuthorsDao();
+export default new AuthorsDao();

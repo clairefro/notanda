@@ -1,5 +1,5 @@
 import { Pool } from "pg";
-const { pool }: { pool: Pool } = require("../../db/_db");
+import { pool } from "../../db/_db.js";
 
 class BaseDao<T = any> {
   protected tableName: string;
@@ -92,4 +92,4 @@ class BaseDao<T = any> {
   }
 }
 
-export = BaseDao;
+export default BaseDao;

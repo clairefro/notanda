@@ -13,9 +13,16 @@ WORKDIR /app
 COPY backend/package*.json ./
 RUN npm ci --only=production
 
+# Install build dependencies
+RUN npm install --save-dev typescript tsup
+
 COPY backend ./
+
+# Build TypeScript with tsup
+RUN npm run build
+
 COPY --from=frontend-build /app/frontend/dist ./public
 
 EXPOSE 3000
 
-CMD ["node", "src/server.js"]
+CMD ["node", "dist/server.js"]

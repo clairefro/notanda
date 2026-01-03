@@ -1,6 +1,10 @@
 import express, { Request, Response } from "express";
 import path from "path";
-import apiRoutes from "./routes";
+import { fileURLToPath } from "url";
+import apiRoutes from "./routes/index";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.BE_PORT || 3000;

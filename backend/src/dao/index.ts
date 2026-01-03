@@ -1,8 +1,7 @@
-const BaseDao = require("./baseDao");
-const itemsDao = require("./itemsDao");
+import BaseDao from "./baseDao";
+import itemsDao from "./itemsDao";
+import authorsDao from "./authorsDao";
 
-module.exports = {
-  itemsDao: itemsDao,
-  authorsDao: new BaseDao("authors"),
-  itemAuthorsDao: new BaseDao("item_authors"),
-};
+export { itemsDao, authorsDao };
+
+export const itemAuthorsDao = new BaseDao("item_authors");

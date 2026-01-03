@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-const authorsDao = require("../dao/authorsDao");
+import { authorsDao } from "../dao/index";
 
 const router = express.Router();
 

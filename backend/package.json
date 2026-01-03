@@ -2,10 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Backend for notanda",
+  "type": "module",
   "main": "server.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/src/server.js",
+    "build": "tsup src/server.ts --format esm --clean",
+    "start": "node dist/server.js",
     "dev": "tsx watch src/server.ts",
     "test": "echo \"No backend tests specified\" && exit 0",
     "db:setup": "node db/setup.js",
@@ -24,6 +25,7 @@
     "@types/pg": "^8.16.0",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.2",
+    "tsup": "^8.5.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }

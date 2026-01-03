@@ -1,5 +1,5 @@
-const BaseDao = require("./baseDao");
-const { pool } = require("../../db/_db");
+import BaseDao from "./baseDao";
+import { pool } from "../../db/_db.js";
 
 class ItemsDao extends BaseDao {
   constructor() {
@@ -35,4 +35,4 @@ class ItemsDao extends BaseDao {
   }
 }
 
-module.exports = new ItemsDao();
+export default new ItemsDao();
