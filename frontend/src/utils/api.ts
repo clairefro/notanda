@@ -1,5 +1,5 @@
 const api = {
-  async get(endpoint) {
+  async get<T>(endpoint: string): Promise<T> {
     try {
       const response = await fetch(endpoint);
       if (!response.ok) {
