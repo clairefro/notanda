@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../utils/api";
-import { ItemWithAuthors } from "../types";
+import type { ItemWithAuthors } from "../../../types";
 
 const BookshelfPage = () => {
   const [items, setItems] = useState<ItemWithAuthors[]>([]);
