@@ -22,10 +22,13 @@
     "docker:down": "docker-compose down",
     "docker:dev:up": "docker-compose -f docker-compose.dev.yml up -d",
     "docker:dev:down": "docker-compose -f docker-compose.dev.yml down",
+    "docker:dev:db:setup": "export $(cat .env | grep -v '^#' | xargs) && docker-compose -f docker-compose.dev.yml exec -T db psql -U $DB_USER -d $DB_NAME -f /dev/stdin < backend/db/schema.sql",
+    "docker:dev:db:seed": "npm run be:db:seed",
+    "docker:dev:db:shell": "export $(cat .env | grep -v '^#' | xargs) && docker-compose -f docker-compose.dev.yml exec db psql -U $DB_USER -d $DB_NAME",
     "docker:logs": "docker-compose logs -f",
     "docker:restart": "docker-compose restart app",
     "docker:db:setup": "docker-compose exec app node db/setup.js",
     "docker:db:seed": "docker-compose exec app node db/seed.js",
-    "docker:db:shell": "export $(cat .env | xargs) && docker-compose exec db psql -U $DB_USER -d $DB_NAME"
+    "docker:db:shell": "export $(cat .env | grep -v '^#' | xargs) && docker-compose exec db psql -U $DB_USER -d $DB_NAME"
   }
 }
